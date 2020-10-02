@@ -54,6 +54,5 @@ end
 ### See the trace of your code
 Open a Chrome browser. Go to: ```chrome://tracing```. Then drag and drop the text file you have just created. And see the results. You can zoom in, measure times and in general see what is going on with your code. 
 
-See the trace of the example:
-
-https://github.com/juangpc/matlab-chrome-tracer/issues/3#issue-713803862
+See the trace for previous example:
+![image](https://user-images.githubusercontent.com/8955424/94954723-231fb300-04af-11eb-867b-dd0f572fe40b.png)
