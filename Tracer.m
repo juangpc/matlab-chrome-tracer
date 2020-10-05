@@ -5,14 +5,13 @@ classdef Tracer < handle
     end
     methods
         function obj = Tracer(st)
-            if(~Tracer.getSetEnableState)
-                error('First Enable the Tracer. Type: Tracer.enable');
+            if(Tracer.getSetEnableState)
+                if (nargin == 1)
+                    obj.fileName = st.file;
+                    obj.functionName = st.name;
+                end
+                obj = obj.saveBeginEvent();
             end
-            if (nargin == 1)
-                obj.fileName = st.file;
-                obj.functionName = st.name;
-            end
-            obj = obj.saveBeginEvent();
         end
         function obj = delete(obj)
             obj = obj.saveEndEvent();
