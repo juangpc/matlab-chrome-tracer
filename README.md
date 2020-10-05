@@ -19,7 +19,7 @@ Tracer.enable(fname);
 ```
 
 ### Specify which functions to trace
-Specify which functions you would like to trace. For this to hapen you just need to copy the following line ```p = Tracer(dbstack); cleanup = onCleanup(@()p.delete);``` at the begining of the function you want to trace. Sub-functions are compatible with Tracer.
+Specify which functions you would like to trace. For this to hapen you just need to copy the following line ```t__ = Tracer(dbstack);``` at the begining of the function you want to trace. Sub-functions are compatible with Tracer.
 
 An example of this could be the following Matlab code: 
 
