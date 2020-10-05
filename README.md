@@ -6,7 +6,7 @@ A Matlab class to generate tracer json files compatible with Chrome-based browse
 You need to have ```Tracer.m``` in the path. This will allow you to configure and use the class.
 
 ### Enable the Tracer
-Once ```Tracer.m``` is in the path. Enable the tracing: ```Tracer.enable(fname)```. The variable ```fname``` is the name of the text file where you want to store the traces. If you don't specify any value a file named ```default_tracer_file.json``` will be created in your current folder. 
+Once ```Tracer.m``` is in the path. Enable the tracing: ```Tracer.enable(fname)```. The variable ```fname``` is optional and contains the name of the json file where you want to store the traces. If you don't specify any value a file named ```default_tracer_file.json``` will be created in your current folder. 
 
 ```
 Tracer.enable();
@@ -26,7 +26,7 @@ An example of this could be the following Matlab code:
 ```matlab
 function actions
 
-p = Tracer(dbstack); cleanup = onCleanup(@()p.delete);
+t__ = Tracer(dbstack);
 
 pause(2.5)
 
@@ -37,14 +37,14 @@ action2;
 end
 
 function action1
-p = Tracer(dbstack); cleanup = onCleanup(@()p.delete);
+t__=Tracer(dbstack);
 
 pause(1.5);
 
 end
 
 function action2
-p = Tracer(dbstack); cleanup = onCleanup(@()p.delete);
+t__=Tracer(dbstack);
 
 pause(2);
 
