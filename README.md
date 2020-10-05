@@ -49,6 +49,9 @@ end
 ```
 ### Stop the tracing
 The tracer is waiting for further events unless it is disabled or set to stop. ```Tracer.disable``` or ```Tracer.stop``` will stop the register of function calls and will save the final json file for an eventual review with Chrome web browser's tracing application.
+```
+Tracer.disable;
+```
 
 ### See the trace of your code
 Open a Chrome browser. Go to: ```chrome://tracing```. Then drag and drop the text file you have just created. And see the results. You can zoom in, measure times and in general see what is going on with your code. 
