@@ -1,19 +1,16 @@
 # matlab-chrome-tracer
-A Matlab class to generate tracer json files compatible with Chrome-based browser.
+A Matlab functionality to generate tracer json files compatible with Chrome-based browser.
 
 ## Usage
 
-You need to have ```Tracer.m``` in the path. This will allow you to configure and use the class.
+You need to have ```Tracer.m``` file in the path. This will allow you to configure and use the tracer.
 
 ### Enable the Tracer
-Once ```Tracer.m``` is in the path. Enable the tracing: ```Tracer.enable(fname)```. The variable ```fname``` is optional and contains the name of the json file where you want to store the traces. If you don't specify any value a file named ```default_tracer_file.json``` will be created in your current folder. 
+Enable the tracing: ```Tracer.enable(fname)``` or also ```Tracer.start(fname)```. The variable ```fname``` is optional and contains the name of the json file where you want to store the traces. If you don't specify any value a file named ```default_tracer_file.json``` will be created in your current folder. 
 
 ```
 Tracer.enable();
 ```
-
-or 
-
 ```
 Tracer.enable(fname);
 ```
@@ -50,6 +47,8 @@ pause(2);
 
 end
 ```
+### Stop the tracing
+The tracer is waiting for further events unless it is disabled or set to stop. ```Tracer.disable``` or ```Tracer.stop``` will stop the register of function calls and will save the final json file for an eventual review with Chrome web browser's tracing application.
 
 ### See the trace of your code
 Open a Chrome browser. Go to: ```chrome://tracing```. Then drag and drop the text file you have just created. And see the results. You can zoom in, measure times and in general see what is going on with your code. 
