@@ -1,0 +1,9 @@
+{"displayTimeUnit": "ms",
+"traceEvents":[
+ 
+{"name":"actions","cat":"actions.m","ph":"B","ts":"7821000.000004","pid":1,"tid":1,"args":{}},
+{"name":"action1","cat":"actions.m","ph":"B","ts":"9328999.999998","pid":1,"tid":1,"args":{}},
+{"name":"action1","cat":"actions.m","ph":"E","ts":"9830999.999998","pid":1,"tid":1,"args":{}},
+{"name":"action2","cat":"actions.m","ph":"B","ts":"9832999.999999","pid":1,"tid":1,"args":{}},
+{"name":"action2","cat":"actions.m","ph":"E","ts":"10834999.999999","pid":1,"tid":1,"args":{}},
+{"name":"actions","cat":"actions.m","ph":"E","ts":"10836000.000003","pid":1,"tid":1,"args":{}}]}
