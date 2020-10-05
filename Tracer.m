@@ -13,20 +13,22 @@ classdef Tracer < handle
                 obj = obj.saveBeginEvent();
             end
         end
-        function obj = delete(obj)
-            obj = obj.saveEndEvent();
+        function delete(obj)
+            if(Tracer.getSetEnableState)
+                obj.saveEndEvent();
+            end
         end
         function obj = saveBeginEvent(obj)
             str1 = ['{"name":"' obj.functionName '","cat":"' obj.fileName '",'];
             str2 = ['"ph":"B","ts":"' num2str(timeDiffNow(Tracer.getSetZeroTime),'%f') '",'];
-            str3 = ['"pid":1,"tid":1,"args":{}}'];
+            str3 = ['"pid":1,"tid":1,"args":{}}']; %#ok<NBRAK>
             str = [',\n' str1 str2 str3];
             writeToFile(str);
         end
         function obj = saveEndEvent(obj)
             str1 = ['{"name":"' obj.functionName '","cat":"' obj.fileName '",'];
             str2 = ['"ph":"E","ts":"' num2str(timeDiffNow(Tracer.getSetZeroTime),'%f') '",'];
-            str3 = ['"pid":1,"tid":1,"args":{}}'];
+            str3 = ['"pid":1,"tid":1,"args":{}}']; %#ok<NBRAK>
             str = [',\n' str1 str2 str3];
             writeToFile(str);
         end
@@ -91,6 +93,9 @@ classdef Tracer < handle
             if(nargin > 0)
                 zeroTime = t;
             end
+            if( isempty(zeroTime))
+                zeroTime = timeNow;
+            end
             outZeroTime = zeroTime;
         end
         function outSomeoneIsWriting = getSetSomeoneIsWriting(state)
@@ -98,9 +103,12 @@ classdef Tracer < handle
             if(nargin > 0)
                 someoneIsWriting = state;
             end
+            if (isempty(someoneIsWriting))
+                someoneIsWriting = false;
+            end
             outSomeoneIsWriting = someoneIsWriting;
         end
-
+        
     end
 end
 
