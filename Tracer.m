@@ -46,9 +46,7 @@ classdef Tracer < handle
             writeToFile('{"displayTimeUnit": "ms",\n"traceEvents":[\n');
         end
         function disable
-            if(isempty(Tracer.getSetEnableState))
-                warning('Tracer already disabled.');
-            else
+            if(Tracer.getSetEnableState)
                 fprintf(Tracer.getSetFileId, ']}');
                 fclose(Tracer.getSetFileId);
                 Tracer.getSetZeroTime(0);
@@ -56,6 +54,16 @@ classdef Tracer < handle
                 Tracer.getSetEnableState(false);
                 fixInitialCommaInJson(Tracer.getSetFileName);
             end
+        end
+        function start(fname)
+            if(nargin > 0)
+                Tracer.enable(fname);
+            else
+                Tracer.enable;
+            end
+        end
+        function stop
+            Tracer.disable
         end
         function fileNameOut = getSetFileName(fileNameIn)
             persistent fileName;
