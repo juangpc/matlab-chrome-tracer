@@ -22,5 +22,3 @@ disp("ending action2")
 action1
 end
 
-
-
