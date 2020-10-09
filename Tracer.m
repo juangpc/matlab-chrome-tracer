@@ -49,6 +49,7 @@ classdef Tracer < handle
             if(Tracer.getSetEnableState)
                 fprintf(Tracer.getSetFileId, ']}');
                 fclose(Tracer.getSetFileId);
+                Tracer.getSetFileId(0);
                 Tracer.getSetZeroTime(0);
                 Tracer.getSetSomeoneIsWriting(false);
                 Tracer.getSetEnableState(false);
@@ -88,11 +89,12 @@ classdef Tracer < handle
         function outFid = getSetFileId(fname)
             persistent fid;
             if(nargin > 0)
-                if (fid > 0)
-                    fclose(fid);
-                end
-                fid = fopen(fname,'w');
-                Tracer.getSetSomeoneIsWriting(false);
+                if (fname == 0)
+                    fid = 0;
+                else
+                    fid = fopen(fname,'w');
+                    Tracer.getSetSomeoneIsWriting(false);
+                end                
             end
             outFid = fid;
         end
