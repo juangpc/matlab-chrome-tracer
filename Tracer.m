@@ -129,16 +129,19 @@ function outTimer = deleteAllMemoryTimersBut(pos)
 if (nargin == 0)
     pos = 0;
 end
-memoryTimerList = timerfind(timerfindall,'Name','Tracer.MemoryTimer');
-if (~isempty(memoryTimerList))
-    for i = 1 : length(memoryTimerList)-pos
-        memoryTimerList(i).stop;
-        delete(memoryTimerList(i));
+timerList = timerfindall;
+outTimer = [];
+if ( ~isempty(timerList))
+    memoryTimerList = timerfind(timerList,'Name','Tracer.MemoryTimer');
+    if (~isempty(memoryTimerList))
+        for i = 1 : length(memoryTimerList)-pos
+            memoryTimerList(i).stop;
+            delete(memoryTimerList(i));
+        end
+        outTimer = memoryTimerList(end);
     end
-    outTimer = memoryTimerList(end);
-else
-    outTimer = [];
 end
+
 end
 
 function outTimer = initTimer
