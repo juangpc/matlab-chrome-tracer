@@ -61,3 +61,6 @@ Tracer.disable;
 ### See the trace of your code
 Open a Chrome browser. Go to: ```chrome://tracing```. Then drag and drop the text file you have just created. And see the results. You can zoom in, measure times and in general see what is going on with your code. 
 
+This is the trace (with memory usage) of the previous example ```function actions```;
+
+![2020-10-09 14_54_26-chrome___tracing](https://user-images.githubusercontent.com/8955424/95626594-2fbc8200-0a40-11eb-9285-c377736b8011.png)
