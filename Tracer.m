@@ -81,6 +81,17 @@ classdef Tracer < handle
             end
             out = getSetTrackMemoryUsage;
         end
+        function setTrackMemoryFreq(f)
+           t = getMemoryTimer;
+           timerState = t.Running;
+           if(timerState)
+               t.stop;
+           end
+           t.Period = f;
+           if(timerState)
+               t.start;
+           end
+        end
     end
 end
 
@@ -137,7 +148,7 @@ outTimer = timer('Name','Tracer.MemoryTimer', ...
     'BusyMode','drop',...
     'ExecutionMode','fixedRate',...
     'Period',1,...
-    'StartDelay',1,...
+    'StartDelay',0,...
     'TimerFcn',@(~,~)saveMemoryUsage);
 end
 
@@ -208,7 +219,7 @@ function saveMemoryUsage
 if(getSetEnableState())
     str1 = '{"name":"memory","ph":"C","ts":';
     str2 = [num2str(timeDiffNow(getSetZeroTime),'%d') ',"pid":1,"tid":1'];
-    str3 = [',"args":{"memory":' num2str(getMatlabMemoryUsage(),'%d') '}}'];
+    str3 = [',"args":{"memory[MB]":' num2str(getMatlabMemoryUsage(),'%d') '}}'];
     str = [',\n' str1 str2 str3];
     writeToFile(str);
 end
