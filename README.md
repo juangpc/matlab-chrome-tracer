@@ -26,7 +26,7 @@ You can also modify the frequency with which the memory is sampled (defualt: 1s)
 Specify which functions you would like to trace. For this to hapen you just need to copy the following line ```t__ = Tracer(dbstack);``` at the begining of the function you want to trace. Sub-functions are compatible with Tracer.
 
 An example of this could be the following Matlab code: 
-
+```
 function actions
 t__=Tracer(dbstack);
 disp("starting actions")
@@ -53,6 +53,7 @@ disp("ending action2")
 action1
 pause(1.5)
 end
+```
 
 ### Stop the tracing
 The tracer is waiting for further events unless it is disabled or set to stop. ```Tracer.disable``` or ```Tracer.stop``` will stop the register of function calls and will save the final json file for an eventual review with Chrome web browser's tracing application.
