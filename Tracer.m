@@ -37,15 +37,17 @@ classdef Tracer < handle
         function enable(varargin)
             initFile(varargin{:})
             getSetZeroTime(timeNow);
-            getSetEnableState(true);
-            t = initTimer;
+            t = initMemoryTimer;
+            getSetTrackMemoryUsage(true);
             if(getSetTrackMemoryUsage)
                 t.start;
             end
+            getSetEnableState(true);
         end
         function disable
             if(getSetEnableState)
                 deleteMemoryTimer;
+                getSetTrackMemoryUsage(false);
                 finishFile;
                 getSetZeroTime(0);
                 getSetEnableState(false);
@@ -144,7 +146,7 @@ end
 
 end
 
-function outTimer = initTimer
+function outTimer = initMemoryTimer
 deleteAllMemoryTimersBut;
 outTimer = timer('Name','Tracer.MemoryTimer', ...
     'ObjectVisibility','off',...
