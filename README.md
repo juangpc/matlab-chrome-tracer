@@ -66,3 +66,5 @@ Open a Chrome browser. Go to: ```chrome://tracing```. Then drag and drop the tex
 
 This is the trace (with memory usage) of the previous example ```function actions```;
 ![image](https://user-images.githubusercontent.com/8955424/95630871-3949e800-0a48-11eb-851c-f25fe0362bb1.png)
+
+[![View Chrome Tracing library. on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/81061-chrome-tracing-library)
